@@ -21,7 +21,7 @@ import androidx.compose.runtime.LaunchedEffect
 import com.google.android.gms.maps.CameraUpdateFactory
 import androidx.compose.ui.graphics.Color
 import com.google.maps.android.compose.Polygon
-
+import com.google.maps.android.compose.Polyline
 @Composable
 fun MapScreen() {
     val arequipaLocation = LatLng(-16.4040102, -71.559611) // Arequipa, Perú
@@ -61,7 +61,11 @@ fun MapScreen() {
         LatLng(-16.399178, -71.536289),
         LatLng(-16.399299, -71.536721)
     )
-
+    val rutaTuristica = listOf(
+        LatLng(-16.399030, -71.536625),  // Plaza de Armas
+        LatLng(-16.422985, -71.530970),  // Parque Lambramani
+        LatLng(-16.432660, -71.509240)   // Mall Aventura
+    )
     Box(modifier = Modifier.fillMaxSize()) {
         GoogleMap(
             modifier = Modifier.fillMaxSize(),
@@ -100,6 +104,11 @@ fun MapScreen() {
                 strokeColor = Color.Red,
                 fillColor = Color.Blue,
                 strokeWidth = 5f
+            )
+            Polyline(
+                points = rutaTuristica,
+                color = Color.Magenta,
+                width = 10f
             )
         }
     }
